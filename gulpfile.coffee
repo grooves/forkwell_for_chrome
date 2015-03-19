@@ -59,7 +59,7 @@ gulp.task 'watch', ->
   gulp.watch 'src/sass/*.sass', ['sass']
 
 gulp.task 'zip', ['build'], ->
-  gulp.src 'dist/*'
+  gulp.src 'dist/**/*'
     .pipe zip("forkwell_for_chrome-#{manifest.version}.zip")
     .pipe gulp.dest('dist')
 
