@@ -1,0 +1,4 @@
+--require espower-coffee/guess
+--compilers coffee:coffee-script/register
+--recursive
+--require test/mocha_resolve_test_path.coffee
