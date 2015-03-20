@@ -55,9 +55,12 @@ gulp.task 'watch', ->
   gulp.watch 'src/coffee/**/*.coffee', ['coffee']
   gulp.watch 'src/sass/*.sass', ['sass']
 
+gulp.task 'app_version', ->
+  console.log "v#{manifest.version}"
+
 gulp.task 'zip', ['build'], ->
   gulp.src 'dist/**/*'
-    .pipe zip("forkwell_for_chrome-#{manifest.version}.zip")
-    .pipe gulp.dest('dist')
+    .pipe zip("dist-v#{manifest.version}.zip")
+    .pipe gulp.dest('.')
 
 gulp.task 'default', ['watch', 'build']

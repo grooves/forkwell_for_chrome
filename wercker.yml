@@ -8,3 +8,29 @@ build:
         code: |
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
+    - script:
+        name: create dist
+        code: gulp zip
+deploy:
+  steps:
+    - script:
+        name: get version from gulp
+        code: export APP_VERSION=$(gulp app_version --silent)
+    - script:
+        name: configure git
+        code: |
+          git config --global user.email "pleasemailus@wercker.com"
+          git config --global user.name "wercker"
+          git remote set-url origin https://$GITHUB_TOKEN@github.com/$WERCKER_GIT_OWNER/$WERCKER_GIT_REPOSITORY.git
+    - script:
+        name: create tag
+        code: git tag $APP_VERSION -m "$APP_VERSION release"
+    - script:
+        name: push tag
+        code: git push origin $APP_VERSION
+    - github-create-release:
+        token: $GITHUB_TOKEN
+        tag: $APP_VERSION
+    - github-upload-asset:
+        token: $GITHUB_TOKEN
+        file: dist-$APP_VERSION.zip
