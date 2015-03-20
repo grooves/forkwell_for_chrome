@@ -19,7 +19,8 @@
     "power-assert": "^0.10.2"
   },
   "scripts": {
-    "test": "mocha --opts test/mocha.opts -R dot"
+    "test": "mocha --opts test/mocha.opts -R dot",
+    "zip": "gulp zip"
   },
   "repository": {
     "type": "git",

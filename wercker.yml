@@ -10,7 +10,7 @@ build:
           echo "npm version $(npm -v) running"
     - script:
         name: create dist
-        code: gulp zip
+        code: npm run zip
 deploy:
   steps:
     - script:
