@@ -20,7 +20,8 @@
   },
   "scripts": {
     "test": "mocha --opts test/mocha.opts -R dot",
-    "zip": "gulp zip"
+    "zip": "gulp zip",
+    "app_version": "gulp app_version --silent"
   },
   "repository": {
     "type": "git",

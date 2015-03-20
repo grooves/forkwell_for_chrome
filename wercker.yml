@@ -14,8 +14,8 @@ build:
 deploy:
   steps:
     - script:
-        name: get version from gulp
-        code: export APP_VERSION=$(gulp app_version --silent)
+        name: get app_version from gulp
+        code: export APP_VERSION=$(npm app_version --silent)
     - script:
         name: configure git
         code: |
