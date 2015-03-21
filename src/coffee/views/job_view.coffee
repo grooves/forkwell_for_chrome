@@ -1,7 +1,7 @@
 class JobView
   templateString = [
     '<img src="<%= icon_url %>">',
-    '<a class="job-title" href="<%= url %>"><%= title %></a>',
+    '<a class="job-title" href="<%= url %>?via=chrome" target="_blank"><%= title %></a>',
   ].join('')
   compiled = _.template templateString
 

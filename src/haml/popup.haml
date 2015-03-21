@@ -9,13 +9,14 @@
     %section
       %nav.row
         .col-xs-2
-          %a.navbar-brand(href="https://jobs.forkwell.com/" target="_blank" tabindex="-1")
+          %a.navbar-brand(href="https://jobs.forkwell.com/?via=chrome" target="_blank" tabindex="-1")
             %img(alt="Forkwell Jobs" src="/images/logo.png")
         .col-xs-5
           %form(action="https://jobs.forkwell.com/jobs/search" method="GET" target="_blank")
+            %input(type="hidden" name="via" value="chrome")
             %input#search-q.form-control(type="text" name="q" placeholder="フリーワード検索")
         .col-xs-4
-          %a#jobs-link(href="https://jobs.forkwell.com/jobs" target="_blank")
+          %a#jobs-link(href="https://jobs.forkwell.com/jobs?via=chrome" target="_blank")
             %span.glyphicon.glyphicon-th-list(aria-hidden="true") 求人一覧
     %section.jobs-list
       .container
