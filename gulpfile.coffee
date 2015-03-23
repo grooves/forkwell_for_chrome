@@ -11,33 +11,38 @@ manifest = require './src/manifest'
 gulp.task 'clean', (cb) ->
   del 'dist', cb
 
-gulp.task 'copy:manifest', ['clean'], ->
+gulp.task 'copy:manifest', ->
   gulp.src 'src/manifest.json'
     .pipe gulp.dest('dist')
 
-gulp.task 'copy:images', ['clean'], ->
+gulp.task 'copy:images', ->
+  del.sync 'dist/images'
   gulp.src 'src/images/*'
     .pipe gulp.dest('dist/images')
 
-gulp.task 'copy:vendor', ['clean'], ->
+gulp.task 'copy:vendor', ->
+  del.sync 'dist/vendor'
   gulp.src 'vendor/**/*'
     .pipe gulp.dest('dist/vendor')
 
-gulp.task 'haml', ['clean'], ->
+gulp.task 'haml', ->
+  del.sync 'dist/html'
   gulp.src 'src/haml/*.haml'
     .pipe plumber
       errorHandler: notify.onError('Error: <%= error.message %>')
     .pipe haml()
     .pipe gulp.dest('dist/html')
 
-gulp.task 'coffee', ['clean'], ->
+gulp.task 'coffee', ->
+  del.sync 'dist/javascripts'
   gulp.src 'src/coffee/**/*.coffee'
     .pipe plumber
       errorHandler: notify.onError("Error: <%= error.message %>")
     .pipe coffee(bare: true)
     .pipe gulp.dest('dist/javascripts')
 
-gulp.task 'sass', ['clean'], ->
+gulp.task 'sass', ->
+  del.sync 'dist/stylesheets'
   gulp.src 'src/sass/*.sass'
     .pipe plumber
       errorHandler: notify.onError("Error: <%= error.message %>")
