@@ -1,3 +1,5 @@
+require('dotenv').load()
+
 gulp = require 'gulp'
 del = require 'del'
 haml = require 'gulp-haml'
@@ -6,13 +8,19 @@ sass = require 'gulp-sass'
 plumber = require 'gulp-plumber'
 notify = require 'gulp-notify'
 zip = require 'gulp-zip'
-manifest = require './src/manifest'
+jeditor = require 'gulp-json-editor'
+
+version = require('./package.json').version
 
 gulp.task 'clean', (cb) ->
   del 'dist', cb
 
 gulp.task 'copy:manifest', ->
   gulp.src 'src/manifest.json'
+    .pipe jeditor (json) ->
+      json.version = version
+      json.permissions.push process.env.FORKWELL_HOST if process.env.FORKWELL_HOST
+      json
     .pipe gulp.dest('dist')
 
 gulp.task 'copy:images', ->
@@ -61,11 +69,11 @@ gulp.task 'watch', ->
   gulp.watch 'src/sass/*.sass', ['sass']
 
 gulp.task 'app_version', ->
-  console.log "v#{manifest.version}"
+  console.log "v#{version}"
 
 gulp.task 'zip', ['build'], ->
   gulp.src 'dist/**/*'
-    .pipe zip("dist-v#{manifest.version}.zip")
+    .pipe zip("dist-v#{version}.zip")
     .pipe gulp.dest('.')
 
 gulp.task 'default', ['watch', 'build']
