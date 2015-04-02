@@ -1,6 +1,6 @@
 fetchFromForkwellJobs = ->
   host = 'https://jobs.forkwell.com'
-  url = "#{host}/chrome/services.json"
+  url = "#{host}/api/v1/chrome/services.json"
   $.getJSON url, (json) ->
     chrome.storage.local.set json
 
