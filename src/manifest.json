@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Forkwell for Chrome",
-  "description": "This extension shows jobs for the current page from Forkwell Jobs",
+  "name": "Forkwell Jobs",
+  "description": "「スキル」と「こだわり」で選べる、エンジニア目線の求人・転職サイト",
 
   "browser_action": {
     "default_icon": "images/icon.png",
