@@ -17,7 +17,6 @@
 
   "background": {
     "scripts": [
-      "vendor/javascripts/jquery.min.js",
       "javascripts/background.js"
     ]
   },

@@ -9,6 +9,9 @@ plumber = require 'gulp-plumber'
 notify = require 'gulp-notify'
 zip = require 'gulp-zip'
 jeditor = require 'gulp-json-editor'
+browserify = require 'browserify'
+source = require 'vinyl-source-stream'
+buffer = require 'vinyl-buffer'
 
 version = require('./package.json').version
 
@@ -45,6 +48,15 @@ gulp.task 'coffee', ->
       errorHandler: notify.onError("Error: <%= error.message %>")
     .pipe coffee(bare: true)
     .pipe gulp.dest('dist/javascripts')
+
+gulp.task 'coffee:background', ->
+  browserify
+    entries: './src/coffee/background.coffee'
+    extensions: ['.coffee']
+  .transform 'coffeeify'
+  .bundle()
+  .pipe source('background.js')
+  .pipe gulp.dest('dist/javascripts')
 
 gulp.task 'sass', ->
   gulp.src 'src/sass/*.sass'
