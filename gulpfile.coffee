@@ -24,17 +24,14 @@ gulp.task 'copy:manifest', ->
     .pipe gulp.dest('dist')
 
 gulp.task 'copy:images', ->
-  del.sync 'dist/images'
   gulp.src 'src/images/*'
     .pipe gulp.dest('dist/images')
 
 gulp.task 'copy:vendor', ->
-  del.sync 'dist/vendor'
   gulp.src 'vendor/**/*'
     .pipe gulp.dest('dist/vendor')
 
 gulp.task 'haml', ->
-  del.sync 'dist/html'
   gulp.src 'src/haml/*.haml'
     .pipe plumber
       errorHandler: notify.onError('Error: <%= error.message %>')
@@ -50,7 +47,6 @@ gulp.task 'coffee', ->
     .pipe gulp.dest('dist/javascripts')
 
 gulp.task 'sass', ->
-  del.sync 'dist/stylesheets'
   gulp.src 'src/sass/*.sass'
     .pipe plumber
       errorHandler: notify.onError("Error: <%= error.message %>")
@@ -58,7 +54,13 @@ gulp.task 'sass', ->
       indentedSyntax: true
     .pipe gulp.dest('dist/stylesheets')
 
-gulp.task 'build', ['copy:manifest', 'copy:images', 'copy:vendor', 'haml', 'coffee', 'sass']
+gulp.task 'build', ['clean'], ->
+  gulp.start 'copy:manifest'
+  gulp.start 'copy:images'
+  gulp.start 'copy:vendor'
+  gulp.start 'haml'
+  gulp.start 'coffee'
+  gulp.start 'sass'
 
 gulp.task 'watch', ->
   gulp.watch 'src/manifest.json', ['copy:manifest']
