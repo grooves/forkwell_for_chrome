@@ -11,3 +11,5 @@ class JobView
   render: ->
     @el.html(compiled @json)
     @
+
+module.exports = JobView

@@ -41,13 +41,7 @@ gulp.task 'haml', ->
     .pipe haml()
     .pipe gulp.dest('dist/html')
 
-gulp.task 'coffee', ->
-  del.sync 'dist/javascripts'
-  gulp.src 'src/coffee/**/*.coffee'
-    .pipe plumber
-      errorHandler: notify.onError("Error: <%= error.message %>")
-    .pipe coffee(bare: true)
-    .pipe gulp.dest('dist/javascripts')
+gulp.task 'coffee', ['coffee:background', 'coffee:popup']
 
 gulp.task 'coffee:background', ->
   browserify
@@ -56,6 +50,15 @@ gulp.task 'coffee:background', ->
   .transform 'coffeeify'
   .bundle()
   .pipe source('background.js')
+  .pipe gulp.dest('dist/javascripts')
+
+gulp.task 'coffee:popup', ->
+  browserify
+    entries: './src/coffee/popup.coffee'
+    extensions: ['.coffee']
+  .transform 'coffeeify'
+  .bundle()
+  .pipe source('popup.js')
   .pipe gulp.dest('dist/javascripts')
 
 gulp.task 'sass', ->
