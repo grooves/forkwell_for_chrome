@@ -26,6 +26,7 @@
     "jsdom": "^3.1.2",
     "mocha": "^2.2.1",
     "power-assert": "^0.10.2",
+    "sinon": "^1.14.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
