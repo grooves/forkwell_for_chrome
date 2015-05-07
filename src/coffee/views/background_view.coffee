@@ -1,33 +1,14 @@
 class BackgroundView
+  INTERVAL_TIME = 1000 * 60 * 60 * 24
+
   render: ->
-    fetchFromForkwellJobs = ->
-      host = 'https://jobs.forkwell.com'
-      url = "#{host}/api/v1/chrome/services.json"
-      $.getJSON url, (json) ->
-        chrome.storage.local.set json
-
-    updatePopupByUrl = (url) ->
-      chrome.storage.local.get 'services', (items) ->
-        origin = $('<a>', href: url)[0].origin
-        jobs = items.services[origin]
-        if jobs
-          chrome.storage.local.set
-            popup: jobs
-          chrome.browserAction.setBadgeText
-            text: "#{jobs.length}"
-        else
-          chrome.storage.local.set
-            popup: null
-          chrome.browserAction.setBadgeText
-            text: ''
-
-    fetchFromForkwellJobs()
-
-    setInterval fetchFromForkwellJobs, 1000 * 60 * 60 * 24
+    Service.fetch()
+    setInterval (-> Service.fetch()), INTERVAL_TIME
 
     chrome.tabs.onActivated.addListener (activeInfo) ->
       chrome.tabs.get activeInfo.tabId, (tab) ->
-        updatePopupByUrl tab.url
-
+        Service.findJobsByUrl tab.url, (jobs) ->
+          popup = new Popup()
+          popup.setJobs jobs
 
 module.exports = BackgroundView
