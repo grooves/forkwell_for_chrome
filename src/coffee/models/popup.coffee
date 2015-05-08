@@ -1,4 +1,8 @@
 class Popup
+  fetchJobs: (callback) ->
+    chrome.storage.local.get 'popup', (items) ->
+      callback items.popup
+
   setJobs: (jobs) ->
     if jobs
       @jobs = jobs
