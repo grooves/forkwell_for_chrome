@@ -1,5 +1,6 @@
 JobView = require './job_view'
 NotFoundView = require './not_found_view'
+Popup = require '../models/popup'
 
 class PopupView
   render: ->

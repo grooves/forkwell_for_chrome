@@ -1,3 +1,6 @@
+Service = require '../models/service'
+Popup = require '../models/popup'
+
 class BackgroundView
   INTERVAL_TIME = 1000 * 60 * 60 * 24
 
