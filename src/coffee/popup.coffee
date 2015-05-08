@@ -1,7 +1,7 @@
+global.$ = global.jQuery = require 'jquery'
+global._ = require 'underscore'
+require 'bootstrap'
+
 $ ->
-  chrome.storage.local.get 'popup', (items) ->
-    if items.popup
-      for job in items.popup
-        $('#jobs').append new JobView(job).render().el
-    else
-      $('#jobs').append new NotFoundView().render().el
+  PopupView = require './views/popup_view'
+  new PopupView().render()
