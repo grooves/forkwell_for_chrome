@@ -15,9 +15,15 @@ $ gulp
 # => create `dist` directory
 ```
 
-### install extention
+## Install
 
-After setup, drag and drop `${PROJECT_ROOT}/dist` directroy into `chrome://extensions/` page.
+### production
+
+TODO: write chrome web store url
+
+### development
+
+Drag and drop `${PROJECT_ROOT}/dist` directroy into `chrome://extensions/` page.
 
 ## Contributing
 
