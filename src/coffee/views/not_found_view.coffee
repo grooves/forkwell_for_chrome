@@ -10,3 +10,5 @@ class NotFoundView
   render: ->
     @el.html(compiled())
     @
+
+module.exports = NotFoundView
