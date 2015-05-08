@@ -14,4 +14,9 @@ class BackgroundView
           popup = new Popup()
           popup.setJobs jobs
 
+    chrome.tabs.onUpdated.addListener (tabId, changeInfo, tab) ->
+      Service.findJobsByUrl tab.url, (jobs) ->
+        popup = new Popup()
+        popup.setJobs jobs
+
 module.exports = BackgroundView
