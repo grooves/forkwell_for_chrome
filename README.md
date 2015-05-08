@@ -2,16 +2,6 @@
 
 Chrome extention for Forkwell Jobs. If you access a web site managed a company published Forkwell Jobs, this extention shows its job posting.
 
-## Installation
-
-### production
-
-TODO
-
-### development
-
-After setup, drag and drop `${PROJECT_ROOT}/dist` directroy into `chrome://extensions/` page.
-
 ## Setup
 
 ### create extention
@@ -24,6 +14,10 @@ $ cd ${PROJECT_ROOT}
 $ gulp
 # => create `dist` directory
 ```
+
+### install extention
+
+After setup, drag and drop `${PROJECT_ROOT}/dist` directroy into `chrome://extensions/` page.
 
 ## Contributing
 
