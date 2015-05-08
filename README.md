@@ -1,3 +1,6 @@
+[![wercker status](https://app.wercker.com/status/77b18717dfdfc349ba494ba51dcf8d6e/s "wercker status")](https://app.wercker.com/project/bykey/77b18717dfdfc349ba494ba51dcf8d6e)
+[![Coverage Status](https://coveralls.io/repos/grooves/forkwell_for_chrome/badge.svg?branch=master)](https://coveralls.io/r/grooves/forkwell_for_chrome?branch=master)
+
 # forkwell_for_chrome
 
 Chrome extention for Forkwell Jobs. If you access a web site managed a company published Forkwell Jobs, this extention shows its job posting.
