@@ -12,7 +12,7 @@ build:
           echo "npm version $(npm -v) running"
     - script:
         name: create dist
-        code: npm run zip
+        code: npm run zip && test -e dist-$(npm run app_version --silent).zip
 deploy:
   steps:
     - script:
