@@ -45,3 +45,7 @@ deploy:
         name: Upload a package to update an existing store item
         code: |
           curl -H "Authorization: Bearer $GOOGLE_APP_TOKEN" -H "x-goog-api-version: 2" -X PUT -T dist-$APP_VERSION.zip -v https://www.googleapis.com/upload/chromewebstore/v1.1/items/$APP_ID
+    - script:
+        name: Publish an item to the public
+        code: |
+          curl -H "Authorization: Bearer $GOOGLE_APP_TOKEN" -H "x-goog-api-version: 2" -H "Content-Length: 0" -X POST -v https://www.googleapis.com/chromewebstore/v1.1/items/$APP_ID/publish
