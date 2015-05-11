@@ -22,7 +22,9 @@ $ gulp
 
 ### production
 
-TODO: write chrome web store url
+This Chrome extention is available at the following Chrome Web Store.
+
+https://chrome.google.com/webstore/detail/forkwell-jobs/eiblkhondfefcjdpmpcdmbnadfdgbfgc
 
 ### development
 
