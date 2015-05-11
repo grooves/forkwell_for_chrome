@@ -10,6 +10,9 @@ class JobView
 
   render: ->
     @el.html(compiled @json)
+    if @json.state is 'closed'
+      @el.addClass('closed')
+        .append $('<span class="label label-default">').text('募集終了')
     @
 
 module.exports = JobView
