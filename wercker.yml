@@ -42,6 +42,6 @@ deploy:
           JSON=`curl -d "client_id=$GOOGLE_APP_ID" -d "client_secret=$GOOGLE_APP_SECRET" -d "refresh_token=$GOOGLE_REFRESH_TOKEN" -d "grant_type=refresh_token" https://www.googleapis.com/oauth2/v3/token`
           export GOOGLE_APP_TOKEN=`node -p "($JSON).access_token;"`
     - script:
-        name: Uploading a package to update an existing store item
+        name: Upload a package to update an existing store item
         code: |
           curl -H "Authorization: Bearer $GOOGLE_APP_TOKEN" -H "x-goog-api-version: 2" -X PUT -T dist-$APP_VERSION.zip -v https://www.googleapis.com/upload/chromewebstore/v1.1/items/$APP_ID
